@@ -4,9 +4,10 @@ package com.bobbybaker.app.infix;
  * Created by bobbybaker on 10/23/16.
  */
 public class InfixTools {
-    public InfixTools(){
+    public InfixTools() {
 
     }
+
     public static boolean containsAddition(String additionInfix) {
         return additionInfix.contains("+");
     }
@@ -29,5 +30,15 @@ public class InfixTools {
 
     public static boolean containsParenthesis(String parenthesisInfix) {
         return parenthesisInfix.contains("(") && parenthesisInfix.contains(")");
+    }
+
+    public static String convertAddition(String parenthesisInfix) {
+        StringBuilder sb = new StringBuilder(parenthesisInfix);
+        if (containsAddition(parenthesisInfix)) {
+            int plusIndex = parenthesisInfix.indexOf("+");
+            sb.deleteCharAt(plusIndex);
+            sb.append("+");
+        }
+        return sb.toString();
     }
 }

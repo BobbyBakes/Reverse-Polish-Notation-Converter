@@ -1,6 +1,5 @@
 package com.bobbybaker.app.infix;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -53,10 +52,10 @@ public class InfixTest {
     @Test
     public void ifInfixContainsSubtraction() {
         String subtractionInfix = "a-b";
-        String nonSubstractionInfix = "a*b";
+        String nonSubtractionInfix = "a*b";
         {
             assertEquals(true, InfixTools.containsSubtraction(subtractionInfix));
-            assertEquals(false, InfixTools.containsSubtraction(nonSubstractionInfix));
+            assertEquals(false, InfixTools.containsSubtraction(nonSubtractionInfix));
         }
     }
 
@@ -67,6 +66,14 @@ public class InfixTest {
         {
             assertEquals(true, InfixTools.containsParenthesis(parenthesisInfix));
             assertEquals(false, InfixTools.containsParenthesis(nonParenthesisInfix));
+        }
+    }
+
+    @Test
+    public void convertInfixToRPNWithAddition() {
+        String parenthesisInfix = "a+b";
+        {
+            assertEquals("ab+", InfixTools.convertAddition(parenthesisInfix));
         }
     }
 }
