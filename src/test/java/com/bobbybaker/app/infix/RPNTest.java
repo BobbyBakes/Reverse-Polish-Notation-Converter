@@ -18,5 +18,43 @@ public class RPNTest {
             assertEquals(false, RPNTools.isOperator(nonOperator));
         }
     }
+@Test
+    public void ifCharacterIsExponentOperator() {
+        String operator= "^";
+        String nonOperator= "b";
+        {
+            assertEquals(true, RPNTools.isOperator(operator));
+            assertEquals(false, RPNTools.isOperator(nonOperator));
+        }
+    }
 
+    @Test
+    public void ifCharacterIsDivisionOperator() {
+        String operator= "/";
+        String nonOperator= "b";
+        {
+            assertEquals(true, RPNTools.isOperator(operator));
+            assertEquals(false, RPNTools.isOperator(nonOperator));
+        }
+    }
+
+    @Test
+    public void ifCharacterIsMultiplicationOperator() {
+        String operator= "*";
+        String nonOperator= "b";
+        {
+            assertEquals(true, RPNTools.isOperator(operator));
+            assertEquals(false, RPNTools.isOperator(nonOperator));
+        }
+    }
+
+    @Test
+    public void ifCharacterIsSubtractionOperator() {
+        String operator= "-";
+        String nonOperator= "b";
+        {
+            assertEquals(true, RPNTools.isOperator(operator));
+            assertEquals(false, RPNTools.isOperator(nonOperator));
+        }
+    }
 }
