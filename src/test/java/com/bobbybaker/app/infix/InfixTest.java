@@ -49,4 +49,24 @@ public class InfixTest {
             assertEquals(false, InfixTools.containsMultiplication(nonMultiplicationInfix));
         }
     }
+
+    @Test
+    public void ifInfixContainsSubtraction() {
+        String subtractionInfix = "a-b";
+        String nonSubstractionInfix = "a*b";
+        {
+            assertEquals(true, InfixTools.containsSubtraction(subtractionInfix));
+            assertEquals(false, InfixTools.containsSubtraction(nonSubstractionInfix));
+        }
+    }
+
+    @Test
+    public void ifInfixContainsParenthesis() {
+        String parenthesisInfix = "(a+b)-c";
+        String nonParenthesisInfix = "a+b-c";
+        {
+            assertEquals(true, InfixTools.containsParenthesis(parenthesisInfix));
+            assertEquals(false, InfixTools.containsParenthesis(nonParenthesisInfix));
+        }
+    }
 }

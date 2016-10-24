@@ -22,4 +22,12 @@ public class InfixTools {
     public static boolean containsMultiplication(String multiplicationInfix) {
         return multiplicationInfix.contains("*");
     }
+
+    public static boolean containsSubtraction(String subtractionInfix) {
+        return subtractionInfix.contains("-");
+    }
+
+    public static boolean containsParenthesis(String parenthesisInfix) {
+        return parenthesisInfix.contains("(") && parenthesisInfix.contains(")");
+    }
 }
