@@ -4,32 +4,12 @@ package com.bobbybaker.app.infix;
  * Created by bobbybaker on 10/23/16.
  */
 public class InfixTools {
+    private static final String operators = "^/*-+";
     public InfixTools() {
-
     }
 
-    public static boolean containsAddition(String additionInfix) {
-        return additionInfix.contains("+");
-    }
-
-    public static boolean containsExponent(String exponentInfix) {
-        return exponentInfix.contains("^");
-    }
-
-    public static boolean containsDivision(String divisionInfix) {
-        return divisionInfix.contains("/");
-    }
-
-    public static boolean containsMultiplication(String multiplicationInfix) {
-        return multiplicationInfix.contains("*");
-    }
-
-    public static boolean containsSubtraction(String subtractionInfix) {
-        return subtractionInfix.contains("-");
-    }
-
-    public static boolean containsParenthesis(String parenthesisInfix) {
-        return parenthesisInfix.contains("(") && parenthesisInfix.contains(")");
+    public static boolean isOperator(String operator) {
+        return operators.contains(operator);
     }
 
     public static String convertAddition(String additionInfix) {
@@ -37,7 +17,7 @@ public class InfixTools {
 
         StringBuilder sb = new StringBuilder(additionInfix);
         for (String t : additionInfixArray) {
-            if (containsAddition(t)) {
+            if (isOperator(t)) {
                 int plusIndex = additionInfix.indexOf("+");
                 sb.deleteCharAt(plusIndex);
                 sb.append("+");
