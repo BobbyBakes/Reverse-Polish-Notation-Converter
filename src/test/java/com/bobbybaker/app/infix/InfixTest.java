@@ -37,6 +37,7 @@ public class InfixTest {
             assertEquals(false, infixTools.containsExponent(nonExponentInfix));
         }
     }
+
     @Test
     public void ifInfixContainsDivision() {
         String divisionInfix = "a/b";
@@ -44,6 +45,16 @@ public class InfixTest {
         {
             assertEquals(true, infixTools.containsDivision(divisionInfix));
             assertEquals(false, infixTools.containsDivision(nonDivisionInfix));
+        }
+    }
+
+    @Test
+    public void ifInfixContainsMultiplication() {
+        String multiplicationInfix = "a*b";
+        String nonMultiplicationInfix = "a-b";
+        {
+            assertEquals(true, infixTools.containsMultiplication(multiplicationInfix));
+            assertEquals(false, infixTools.containsMultiplication(nonMultiplicationInfix));
         }
     }
 }

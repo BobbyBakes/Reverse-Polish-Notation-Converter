@@ -18,4 +18,8 @@ public class InfixTools {
     public boolean containsDivision(String divisionInfix) {
         return divisionInfix.contains("/");
     }
+
+    public boolean containsMultiplication(String multiplicationInfix) {
+        return multiplicationInfix.contains("*");
+    }
 }
