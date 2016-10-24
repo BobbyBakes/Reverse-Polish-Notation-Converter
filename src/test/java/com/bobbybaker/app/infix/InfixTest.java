@@ -10,21 +10,13 @@ import static org.junit.Assert.assertEquals;
  */
 public class InfixTest {
 
-    private InfixTools infixTools;
-
-
-    @Before
-    public void setUp() {
-        infixTools = new InfixTools();
-    }
-
     @Test
     public void ifInfixContainsAddition() {
         String additionInfix = "a+b";
         String nonAdditionInfix = "a-b";
         {
-            assertEquals(true, infixTools.containsAddition(additionInfix));
-            assertEquals(false, infixTools.containsAddition(nonAdditionInfix));
+            assertEquals(true, InfixTools.containsAddition(additionInfix));
+            assertEquals(false, InfixTools.containsAddition(nonAdditionInfix));
         }
     }
 
@@ -33,8 +25,8 @@ public class InfixTest {
         String exponentInfix = "a^b";
         String nonExponentInfix = "a-b";
         {
-            assertEquals(true, infixTools.containsExponent(exponentInfix));
-            assertEquals(false, infixTools.containsExponent(nonExponentInfix));
+            assertEquals(true, InfixTools.containsExponent(exponentInfix));
+            assertEquals(false, InfixTools.containsExponent(nonExponentInfix));
         }
     }
 
@@ -43,8 +35,8 @@ public class InfixTest {
         String divisionInfix = "a/b";
         String nonDivisionInfix = "a-b";
         {
-            assertEquals(true, infixTools.containsDivision(divisionInfix));
-            assertEquals(false, infixTools.containsDivision(nonDivisionInfix));
+            assertEquals(true, InfixTools.containsDivision(divisionInfix));
+            assertEquals(false, InfixTools.containsDivision(nonDivisionInfix));
         }
     }
 
@@ -53,8 +45,8 @@ public class InfixTest {
         String multiplicationInfix = "a*b";
         String nonMultiplicationInfix = "a-b";
         {
-            assertEquals(true, infixTools.containsMultiplication(multiplicationInfix));
-            assertEquals(false, infixTools.containsMultiplication(nonMultiplicationInfix));
+            assertEquals(true, InfixTools.containsMultiplication(multiplicationInfix));
+            assertEquals(false, InfixTools.containsMultiplication(nonMultiplicationInfix));
         }
     }
 }

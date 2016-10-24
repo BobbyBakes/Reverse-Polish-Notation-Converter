@@ -7,19 +7,19 @@ public class InfixTools {
     public InfixTools(){
 
     }
-    public boolean containsAddition(String additionInfix) {
+    public static boolean containsAddition(String additionInfix) {
         return additionInfix.contains("+");
     }
 
-    public boolean containsExponent(String exponentInfix) {
+    public static boolean containsExponent(String exponentInfix) {
         return exponentInfix.contains("^");
     }
 
-    public boolean containsDivision(String divisionInfix) {
+    public static boolean containsDivision(String divisionInfix) {
         return divisionInfix.contains("/");
     }
 
-    public boolean containsMultiplication(String multiplicationInfix) {
+    public static boolean containsMultiplication(String multiplicationInfix) {
         return multiplicationInfix.contains("*");
     }
 }
