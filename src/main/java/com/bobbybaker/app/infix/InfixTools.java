@@ -14,4 +14,8 @@ public class InfixTools {
     public boolean containsExponent(String exponentInfix) {
         return exponentInfix.contains("^");
     }
+
+    public boolean containsDivision(String divisionInfix) {
+        return divisionInfix.contains("/");
+    }
 }
