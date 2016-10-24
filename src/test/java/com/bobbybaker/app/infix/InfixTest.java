@@ -19,12 +19,22 @@ public class InfixTest {
     }
 
     @Test
-    public void ifIfixContainsAddition() {
+    public void ifInfixContainsAddition() {
         String additionInfix = "a+b";
         String nonAdditionInfix = "a-b";
         {
             assertEquals(true, infixTools.containsAddition(additionInfix));
             assertEquals(false, infixTools.containsAddition(nonAdditionInfix));
+        }
+    }
+
+    @Test
+    public void ifInfixContainsExponent() {
+        String exponentInfix = "a^b";
+        String nonExponentInfix = "a-b";
+        {
+            assertEquals(true, infixTools.containsExponent(exponentInfix));
+            assertEquals(false, infixTools.containsExponent(nonExponentInfix));
         }
     }
 

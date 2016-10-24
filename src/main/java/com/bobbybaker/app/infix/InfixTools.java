@@ -10,4 +10,8 @@ public class InfixTools {
     public boolean containsAddition(String additionInfix) {
         return additionInfix.contains("+");
     }
+
+    public boolean containsExponent(String exponentInfix) {
+        return exponentInfix.contains("^");
+    }
 }
