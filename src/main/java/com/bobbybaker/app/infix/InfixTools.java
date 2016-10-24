@@ -14,7 +14,6 @@ public class InfixTools {
 
     public static String convertAddition(String additionInfix) {
         String[] additionInfixArray = additionInfix.split("");
-
         StringBuilder sb = new StringBuilder(additionInfix);
         for (String t : additionInfixArray) {
             if (isOperator(t)) {
