@@ -32,10 +32,10 @@ public class InfixTools {
         return parenthesisInfix.contains("(") && parenthesisInfix.contains(")");
     }
 
-    public static String convertAddition(String parenthesisInfix) {
-        StringBuilder sb = new StringBuilder(parenthesisInfix);
-        if (containsAddition(parenthesisInfix)) {
-            int plusIndex = parenthesisInfix.indexOf("+");
+    public static String convertAddition(String additionInfix) {
+        StringBuilder sb = new StringBuilder(additionInfix);
+        if (containsAddition(additionInfix)) {
+            int plusIndex = additionInfix.indexOf("+");
             sb.deleteCharAt(plusIndex);
             sb.append("+");
         }
