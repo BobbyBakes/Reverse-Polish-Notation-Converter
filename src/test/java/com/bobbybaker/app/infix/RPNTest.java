@@ -11,17 +11,18 @@ public class RPNTest {
 
     @Test
     public void ifCharacterIsAdditionOperator() {
-        String operator= "+";
-        String nonOperator= "b";
+        String operator = "+";
+        String nonOperator = "b";
         {
             assertEquals(true, RPNTools.isOperator(operator));
             assertEquals(false, RPNTools.isOperator(nonOperator));
         }
     }
-@Test
+
+    @Test
     public void ifCharacterIsExponentOperator() {
-        String operator= "^";
-        String nonOperator= "b";
+        String operator = "^";
+        String nonOperator = "b";
         {
             assertEquals(true, RPNTools.isOperator(operator));
             assertEquals(false, RPNTools.isOperator(nonOperator));
@@ -30,8 +31,8 @@ public class RPNTest {
 
     @Test
     public void ifCharacterIsDivisionOperator() {
-        String operator= "/";
-        String nonOperator= "b";
+        String operator = "/";
+        String nonOperator = "b";
         {
             assertEquals(true, RPNTools.isOperator(operator));
             assertEquals(false, RPNTools.isOperator(nonOperator));
@@ -40,8 +41,8 @@ public class RPNTest {
 
     @Test
     public void ifCharacterIsMultiplicationOperator() {
-        String operator= "*";
-        String nonOperator= "b";
+        String operator = "*";
+        String nonOperator = "b";
         {
             assertEquals(true, RPNTools.isOperator(operator));
             assertEquals(false, RPNTools.isOperator(nonOperator));
@@ -50,11 +51,19 @@ public class RPNTest {
 
     @Test
     public void ifCharacterIsSubtractionOperator() {
-        String operator= "-";
-        String nonOperator= "b";
+        String operator = "-";
+        String nonOperator = "b";
         {
             assertEquals(true, RPNTools.isOperator(operator));
             assertEquals(false, RPNTools.isOperator(nonOperator));
+        }
+    }
+
+    @Test
+    public void convertRPNToInfixWithAddition() {
+        String parenthesisInfix = "ab+";
+        {
+            assertEquals("a+b", RPNTools.convertAddition(parenthesisInfix));
         }
     }
 }

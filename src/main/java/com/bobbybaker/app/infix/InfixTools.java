@@ -5,6 +5,7 @@ package com.bobbybaker.app.infix;
  */
 public class InfixTools {
     private static final String operators = "^/*-+";
+
     public InfixTools() {
     }
 
@@ -17,9 +18,9 @@ public class InfixTools {
         StringBuilder sb = new StringBuilder(additionInfix);
         for (String t : additionInfixArray) {
             if (isOperator(t)) {
-                int plusIndex = additionInfix.indexOf("+");
+                int plusIndex = additionInfix.indexOf(t);
                 sb.deleteCharAt(plusIndex);
-                sb.append("+");
+                sb.append(t);
             }
         }
         return sb.toString();
