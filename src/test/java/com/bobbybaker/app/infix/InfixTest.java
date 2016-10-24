@@ -10,8 +10,47 @@ import static org.junit.Assert.assertEquals;
 public class InfixTest {
 
     @Test
-    public void ifCharacterIsPlusOperator() {
+    public void ifCharacterIsAdditionOperator() {
         String operator= "+";
+        String nonOperator= "b";
+        {
+            assertEquals(true, InfixTools.isOperator(operator));
+            assertEquals(false, InfixTools.isOperator(nonOperator));
+        }
+    }
+    @Test
+    public void ifCharacterIsExponentOperator() {
+        String operator= "^";
+        String nonOperator= "b";
+        {
+            assertEquals(true, InfixTools.isOperator(operator));
+            assertEquals(false, InfixTools.isOperator(nonOperator));
+        }
+    }
+
+    @Test
+    public void ifCharacterIsDivisionOperator() {
+        String operator= "/";
+        String nonOperator= "b";
+        {
+            assertEquals(true, InfixTools.isOperator(operator));
+            assertEquals(false, InfixTools.isOperator(nonOperator));
+        }
+    }
+
+    @Test
+    public void ifCharacterIsMultiplicationOperator() {
+        String operator= "*";
+        String nonOperator= "b";
+        {
+            assertEquals(true, InfixTools.isOperator(operator));
+            assertEquals(false, InfixTools.isOperator(nonOperator));
+        }
+    }
+
+    @Test
+    public void ifCharacterIsSubtractionOperator() {
+        String operator= "-";
         String nonOperator= "b";
         {
             assertEquals(true, InfixTools.isOperator(operator));
