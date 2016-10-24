@@ -33,11 +33,15 @@ public class InfixTools {
     }
 
     public static String convertAddition(String additionInfix) {
+        String[] additionInfixArray = additionInfix.split("");
+
         StringBuilder sb = new StringBuilder(additionInfix);
-        if (containsAddition(additionInfix)) {
-            int plusIndex = additionInfix.indexOf("+");
-            sb.deleteCharAt(plusIndex);
-            sb.append("+");
+        for (String t : additionInfixArray) {
+            if (containsAddition(t)) {
+                int plusIndex = additionInfix.indexOf("+");
+                sb.deleteCharAt(plusIndex);
+                sb.append("+");
+            }
         }
         return sb.toString();
     }
