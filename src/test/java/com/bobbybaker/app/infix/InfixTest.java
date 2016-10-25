@@ -3,6 +3,8 @@ package com.bobbybaker.app.infix;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Stack;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -15,6 +17,12 @@ public class InfixTest {
     private static final String multiplication = "*";
     private static final String subtraction = "-";
     private static final String addition = "+";
+    private Stack<String> stack;
+
+    @Before
+    public void setUp(){
+        stack = new Stack();
+    }
 
 
     @Test
@@ -95,14 +103,26 @@ public class InfixTest {
     }
 
     @Test
-    public void ifOperatorHasPrecedence() {
+    public void ifTopOfStackHasPrecedenceOverOperator() {
         {
-            assertTrue(InfixTools.hasPrecedence(exponent, addition));
-            assertTrue(InfixTools.hasPrecedence(division, addition));
-            assertTrue(InfixTools.hasPrecedence(multiplication, addition));
-            assertTrue(InfixTools.hasPrecedence(division, subtraction));
+            stack.push(addition);
+            stack.push(multiplication);
+            assertEquals(true, InfixTools.hasPrecedence(stack, addition));
+            assertEquals(true, InfixTools.hasPrecedence(stack, subtraction));
+            assertEquals(false, InfixTools.hasPrecedence(stack, multiplication));
+            assertEquals(false, InfixTools.hasPrecedence(stack, division));
+            assertEquals(false, InfixTools.hasPrecedence(stack, exponent));
+
         }
     }
 
-
+    @Test
+    public void convertInfixToRPNWithMultipleOperators() {
+        {
+            String infix = "l/m^n*o-p";
+            {
+                assertEquals("lmn^/o*p-", InfixTools.convert(infix));
+            }
+        }
+    }
 }
