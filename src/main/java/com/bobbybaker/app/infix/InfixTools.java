@@ -67,4 +67,11 @@ public class InfixTools {
         }
         return result.toString();
     }
+
+    public static boolean hasPrecedence(String operator1, String operator2) {
+        if (operators.indexOf(operator1)< operators.indexOf(operator2)){
+            return true;
+        }
+        return false;
+    }
 }
