@@ -63,7 +63,7 @@ public class InfixTest {
     public void convertInfixToRPNWithAddition() {
         String parenthesisInfix = "a+b";
         {
-            assertEquals("ab+", InfixTools.convertAddition(parenthesisInfix));
+            assertEquals("ab+", InfixTools.convert(parenthesisInfix));
         }
     }
 
@@ -71,7 +71,15 @@ public class InfixTest {
     public void convertInfixToRPNWithSubtraction() {
         String parenthesisInfix = "a-b";
         {
-            assertEquals("ab-", InfixTools.convertAddition(parenthesisInfix));
+            assertEquals("ab-", InfixTools.convert(parenthesisInfix));
+        }
+    }
+
+    @Test
+    public void convertInfixToRPNWithAdditionAndSubtraction() {
+        String parenthesisInfix = "a+b-c";
+        {
+            assertEquals("abc-+", InfixTools.convert(parenthesisInfix));
         }
     }
 }
