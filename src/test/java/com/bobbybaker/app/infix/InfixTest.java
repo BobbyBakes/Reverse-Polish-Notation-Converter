@@ -107,12 +107,11 @@ public class InfixTest {
         {
             stack.push(addition);
             stack.push(multiplication);
-            assertEquals(true, InfixTools.hasPrecedence(stack, addition));
-            assertEquals(true, InfixTools.hasPrecedence(stack, subtraction));
-            assertEquals(false, InfixTools.hasPrecedence(stack, multiplication));
-            assertEquals(false, InfixTools.hasPrecedence(stack, division));
-            assertEquals(false, InfixTools.hasPrecedence(stack, exponent));
-
+            assertEquals(true, InfixTools.operatorAtTopOfStackHasPrecedence(stack, addition));
+            assertEquals(true, InfixTools.operatorAtTopOfStackHasPrecedence(stack, subtraction));
+            assertEquals(false, InfixTools.operatorAtTopOfStackHasPrecedence(stack, multiplication));
+            assertEquals(false, InfixTools.operatorAtTopOfStackHasPrecedence(stack, division));
+            assertEquals(false, InfixTools.operatorAtTopOfStackHasPrecedence(stack, exponent));
         }
     }
 
