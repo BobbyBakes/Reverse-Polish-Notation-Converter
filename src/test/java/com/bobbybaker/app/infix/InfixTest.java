@@ -20,7 +20,7 @@ public class InfixTest {
     private Stack<String> stack;
 
     @Before
-    public void setUp(){
+    public void setUp() {
         stack = new Stack();
     }
 
@@ -124,4 +124,25 @@ public class InfixTest {
             }
         }
     }
+
+    @Test
+    public void convertInfixToRPNWithMultipleOperatorsWithParenthesis() {
+        {
+            String infix = "((l/(m^n))*o)-p";
+            {
+                assertEquals("lmn^/o*p-", InfixTools.convert(infix));
+            }
+        }
+    }
+
+    @Test
+    public void convertInfixToRPNWithMultipleIdenticalOperators() {
+        {
+            String infix = "a^b^c";
+            {
+                assertEquals("ab^c^", InfixTools.convert(infix));
+            }
+        }
+    }
+
 }

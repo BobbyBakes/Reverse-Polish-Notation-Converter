@@ -27,7 +27,7 @@ public class InfixTools {
         Stack<String> operatorStack = new Stack<String>();
         for (String t : additionInfixArray) {
             if (isOperator(t)) {
-                reStack(result, operatorStack, t);
+                appendPrecedenceAndIdenticalOperators(result, operatorStack, t);
                 operatorStack.push(t);
             } else if (isParenthesis(t)) {
                 if (t.equals(")")) {
@@ -56,22 +56,25 @@ public class InfixTools {
         return result.toString();
     }
 
-    private static void reStack(StringBuilder result, Stack<String> operatorStack, String t) {
+    private static boolean identicalToTopOfStack(Stack<String> operatorStack, String t) {
+        if (operatorStack.isEmpty() || !(operatorStack.peek().equals(t))) {
+            return false;
+        }
+        return true;
+    }
+
+    private static void appendPrecedenceAndIdenticalOperators(StringBuilder result, Stack<String> operatorStack, String t) {
         if (!operatorStack.isEmpty()) {
-            while (operatorAtTopOfStackHasPrecedence(operatorStack, t)) {
+            while (operatorAtTopOfStackHasPrecedence(operatorStack, t) || identicalToTopOfStack(operatorStack,t)) {
                 result.append(operatorStack.pop());
             }
         }
     }
 
     public static boolean operatorAtTopOfStackHasPrecedence(Stack<String> operatorStack, String operator) {
-        if (!operatorStack.isEmpty()) {
-            if (!isParenthesis(operatorStack.peek())) {
-                if (operators.indexOf(operatorStack.peek()) < operators.indexOf(operator)) {
-                    return true;
-                }
-            }
+        if (operatorStack.isEmpty() || isParenthesis(operatorStack.peek()) || !(operators.indexOf(operatorStack.peek()) < operators.indexOf(operator))) {
+            return false;
         }
-        return false;
+        return true;
     }
 }

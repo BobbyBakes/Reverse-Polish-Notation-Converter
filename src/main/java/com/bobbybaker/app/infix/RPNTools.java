@@ -1,5 +1,9 @@
 package com.bobbybaker.app.infix;
 
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
+
 /**
  * Created by bobbybaker on 10/24/16.
  */
@@ -10,11 +14,26 @@ public class RPNTools {
         return operators.contains(operator);
     }
 
-    public static String convertAddition(String additionRPN) {
-        StringBuilder sb = new StringBuilder(additionRPN);
-        int plusIndex = additionRPN.indexOf("+");
-        sb.deleteCharAt(plusIndex);
-        sb.insert(1, "+");
-        return sb.toString();
+    public static String convert(String RPN) {
+        String[] RPNArray = RPN.split("");
+        StringBuilder result = new StringBuilder();
+        Queue<String> operandQueue = new LinkedList();
+
+        for (String t : RPNArray) {
+            if (isOperator(t)) {
+                placeOperator(t, result, operandQueue);
+            } else {
+                operandQueue.add(t);
+            }
+        }
+        return result.toString();
     }
+
+    private static void placeOperator(String t, StringBuilder result, Queue<String> operandQueue) {
+        result.append(operandQueue.remove());
+        result.append(t);
+        result.append(operandQueue.remove());
+    }
+
+
 }
