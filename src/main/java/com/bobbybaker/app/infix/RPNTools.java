@@ -1,7 +1,7 @@
 package com.bobbybaker.app.infix;
 
-import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 /**
  * Created by bobbybaker on 10/24/16.
@@ -16,23 +16,34 @@ public class RPNTools {
     public static String convert(String RPN) {
         String[] RPNArray = RPN.split("");
         StringBuilder result = new StringBuilder();
-        Queue<String> operandQueue = new LinkedList();
-
+        Stack<String> operatorQueue = new Stack();
         for (String t : RPNArray) {
             if (isOperator(t)) {
-                placeOperator(t, result, operandQueue);
+                operatorQueue.add(t);
+                determineOperatorPlacement(operatorQueue, result);
+//                placeOperator(t, result, operatorQueue);
             } else {
-                operandQueue.add(t);
+                result.append(t);
             }
+
         }
         return result.toString();
     }
 
-    private static void placeOperator(String t, StringBuilder result, Queue<String> operandQueue) {
-        result.append(operandQueue.remove());
-        result.append(t);
-        result.append(operandQueue.remove());
+
+    private static void determineOperatorPlacement(Stack<String> operatorQueue, StringBuilder result) {
+        if (!operatorQueue.isEmpty()) {
+            String operator = operatorQueue.pop();
+            result.insert(result.length() - 1, operator);
+            char a = result.charAt(result.length() - 3);
+            if (a != ')') {
+                result.insert(result.length() - 3, "(");
+                result.insert(result.length(), ")");
+            }
+        }
     }
 
-
+    private static void placeOperator(String t, StringBuilder result, Queue<String> operandQueue) {
+        result.insert(result.length() - 1, t);
+    }
 }

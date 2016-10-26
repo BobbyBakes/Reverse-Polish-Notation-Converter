@@ -74,16 +74,23 @@ public class RPNTest {
     public void convertRPNToInfixWithAddition() {
         String parenthesisInfix = "ab+";
         {
-            assertEquals("a+b", RPNTools.convert(parenthesisInfix));
+            assertEquals("(a+b)", RPNTools.convert(parenthesisInfix));
         }
     }
-
 
     @Test
     public void convertRPNToInfixWithSubtraction() {
         String parenthesisInfix = "ab-";
         {
-            assertEquals("a-b", RPNTools.convert(parenthesisInfix));
+            assertEquals("(a-b)", RPNTools.convert(parenthesisInfix));
+        }
+    }
+
+    @Test
+    public void convertRPNToInfixExpectingParenthesis() {
+        String parenthesisInfix = "ab+c-";
+        {
+            assertEquals("(a+b)-c", RPNTools.convert(parenthesisInfix));
         }
     }
 }
