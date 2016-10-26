@@ -21,8 +21,8 @@ public class InfixTools {
         return PARENTHESIS.contains(operator);
     }
 
-    public static String convert(String additionInfix) {
-        String[] additionInfixArray = additionInfix.split("");
+    public static String convert(String infix) {
+        String[] additionInfixArray = infix.split("");
         StringBuilder result = new StringBuilder();
         Stack<String> operatorStack = new Stack<String>();
         for (String t : additionInfixArray) {
@@ -65,7 +65,7 @@ public class InfixTools {
 
     private static void appendPrecedenceAndIdenticalOperators(StringBuilder result, Stack<String> operatorStack, String t) {
         if (!operatorStack.isEmpty()) {
-            while (operatorAtTopOfStackHasPrecedence(operatorStack, t) || identicalToTopOfStack(operatorStack,t)) {
+            while (operatorAtTopOfStackHasPrecedence(operatorStack, t) || identicalToTopOfStack(operatorStack, t)) {
                 result.append(operatorStack.pop());
             }
         }

@@ -1,6 +1,5 @@
 package com.bobbybaker.app.infix;
 
-import java.util.Queue;
 import java.util.Stack;
 
 /**
@@ -8,6 +7,8 @@ import java.util.Stack;
  */
 public class RPNTools {
     private static final String OPERATORS = "^/*-+";
+    private static final String LEFT_PARENTHESIS = "(";
+    private static final String RIGHT_PARENTHESIS = ")";
 
     public static boolean isOperator(String operator) {
         return OPERATORS.contains(operator);
@@ -15,35 +16,36 @@ public class RPNTools {
 
     public static String convert(String RPN) {
         String[] RPNArray = RPN.split("");
-        StringBuilder result = new StringBuilder();
-        Stack<String> operatorQueue = new Stack();
-        for (String t : RPNArray) {
+        Stack<String> equationStack = new Stack<String>();
+        for (int i = 0; i < RPNArray.length; i++) {
+            String t = String.valueOf(RPN.charAt(i));
             if (isOperator(t)) {
-                operatorQueue.add(t);
-                determineOperatorPlacement(operatorQueue, result);
-//                placeOperator(t, result, operatorQueue);
+                determineOperatorPlacementAndAddToStack(equationStack, t, addParenthesis(i, RPN));
             } else {
-                result.append(t);
+                equationStack.add(t);
             }
 
         }
-        return result.toString();
+        return equationStack.pop();
     }
 
-
-    private static void determineOperatorPlacement(Stack<String> operatorQueue, StringBuilder result) {
-        if (!operatorQueue.isEmpty()) {
-            String operator = operatorQueue.pop();
-            result.insert(result.length() - 1, operator);
-            char a = result.charAt(result.length() - 3);
-            if (a != ')') {
-                result.insert(result.length() - 3, "(");
-                result.insert(result.length(), ")");
-            }
+    private static boolean addParenthesis(int i, String rpn) {
+        if (i == rpn.length() - 1) {
+            return false;
         }
+        return true;
     }
 
-    private static void placeOperator(String t, StringBuilder result, Queue<String> operandQueue) {
-        result.insert(result.length() - 1, t);
+    private static void determineOperatorPlacementAndAddToStack(Stack<String> equationStack, String t, boolean addParenthesis) {
+        StringBuilder newNotation = new StringBuilder();
+        int insertOperatorAtPosition = equationStack.peek().length();
+        newNotation.insert(newNotation.length(), equationStack.pop());
+        newNotation.insert(0, equationStack.pop());
+        newNotation.insert(newNotation.length() - insertOperatorAtPosition, t);
+        if (addParenthesis) {
+            newNotation.insert(0, LEFT_PARENTHESIS);
+            newNotation.insert(newNotation.length(), RIGHT_PARENTHESIS);
+        }
+        equationStack.add(newNotation.toString());
     }
 }

@@ -17,13 +17,6 @@ public class RPNTest {
     private static final String MULTIPLICATION = "*";
     private static final String SUBTRACTION = "-";
     private static final String ADDITION = "+";
-    private Queue<String> operandQueue;
-
-
-    @Before
-    public void setUp() {
-       operandQueue = new LinkedList();
-    }
 
     @Test
     public void ifCharacterIsAdditionOperator() {
@@ -72,25 +65,34 @@ public class RPNTest {
 
     @Test
     public void convertRPNToInfixWithAddition() {
-        String parenthesisInfix = "ab+";
+        String infix = "ab+";
         {
-            assertEquals("(a+b)", RPNTools.convert(parenthesisInfix));
+            assertEquals("a+b", RPNTools.convert(infix));
         }
     }
 
     @Test
     public void convertRPNToInfixWithSubtraction() {
-        String parenthesisInfix = "ab-";
+        String infix = "ab-";
         {
-            assertEquals("(a-b)", RPNTools.convert(parenthesisInfix));
+            assertEquals("a-b", RPNTools.convert(infix));
         }
     }
 
     @Test
     public void convertRPNToInfixExpectingParenthesis() {
-        String parenthesisInfix = "ab+c-";
+        String infix = "ab+c-";
         {
-            assertEquals("(a+b)-c", RPNTools.convert(parenthesisInfix));
+            assertEquals("(a+b)-c", RPNTools.convert(infix));
         }
     }
+
+    @Test
+    public void convertRPNToInfixWithMultipleOperators() {
+        String infix = "ag+ba-c+cedf^*+^*";
+        {
+            assertEquals("(a+g)*(((b-a)+c)^(c+(e*(d^f))))", RPNTools.convert(infix));
+        }
+    }
+
 }
