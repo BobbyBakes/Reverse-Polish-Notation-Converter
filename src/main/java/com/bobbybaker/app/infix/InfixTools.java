@@ -7,18 +7,18 @@ import java.util.Stack;
  */
 public class InfixTools {
     //    Order of operations string represents correct precedence of each operation
-    private static final String operators = "^/*-+";
-    private static final String parenthesis = "()";
+    private static final String OPERATORS = "^/*-+";
+    private static final String PARENTHESIS = "()";
 
     public InfixTools() {
     }
 
     public static boolean isOperator(String operator) {
-        return operators.contains(operator);
+        return OPERATORS.contains(operator);
     }
 
     public static boolean isParenthesis(String operator) {
-        return parenthesis.contains(operator);
+        return PARENTHESIS.contains(operator);
     }
 
     public static String convert(String additionInfix) {
@@ -72,7 +72,7 @@ public class InfixTools {
     }
 
     public static boolean operatorAtTopOfStackHasPrecedence(Stack<String> operatorStack, String operator) {
-        if (operatorStack.isEmpty() || isParenthesis(operatorStack.peek()) || !(operators.indexOf(operatorStack.peek()) < operators.indexOf(operator))) {
+        if (operatorStack.isEmpty() || isParenthesis(operatorStack.peek()) || !(OPERATORS.indexOf(operatorStack.peek()) < OPERATORS.indexOf(operator))) {
             return false;
         }
         return true;

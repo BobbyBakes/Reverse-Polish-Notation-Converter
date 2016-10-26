@@ -6,17 +6,16 @@ import org.junit.Test;
 import java.util.Stack;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 /**
  * Created by bobbybaker on 10/23/16.
  */
 public class InfixTest {
-    private static final String exponent = "^";
-    private static final String division = "/";
-    private static final String multiplication = "*";
-    private static final String subtraction = "-";
-    private static final String addition = "+";
+    private static final String EXPONENT = "^";
+    private static final String DIVISION = "/";
+    private static final String MULTIPLICATION = "*";
+    private static final String SUBTRACTION = "-";
+    private static final String ADDITION = "+";
     private Stack<String> stack;
 
     @Before
@@ -29,7 +28,7 @@ public class InfixTest {
     public void ifCharacterIsAdditionOperator() {
         String nonOperator = "b";
         {
-            assertEquals(true, InfixTools.isOperator(addition));
+            assertEquals(true, InfixTools.isOperator(ADDITION));
             assertEquals(false, InfixTools.isOperator(nonOperator));
         }
     }
@@ -38,7 +37,7 @@ public class InfixTest {
     public void ifCharacterIsExponentOperator() {
         String nonOperator = "b";
         {
-            assertEquals(true, InfixTools.isOperator(exponent));
+            assertEquals(true, InfixTools.isOperator(EXPONENT));
             assertEquals(false, InfixTools.isOperator(nonOperator));
         }
     }
@@ -47,7 +46,7 @@ public class InfixTest {
     public void ifCharacterIsDivisionOperator() {
         String nonOperator = "b";
         {
-            assertEquals(true, InfixTools.isOperator(division));
+            assertEquals(true, InfixTools.isOperator(DIVISION));
             assertEquals(false, InfixTools.isOperator(nonOperator));
         }
     }
@@ -56,7 +55,7 @@ public class InfixTest {
     public void ifCharacterIsMultiplicationOperator() {
         String nonOperator = "b";
         {
-            assertEquals(true, InfixTools.isOperator(multiplication));
+            assertEquals(true, InfixTools.isOperator(MULTIPLICATION));
             assertEquals(false, InfixTools.isOperator(nonOperator));
         }
     }
@@ -65,7 +64,7 @@ public class InfixTest {
     public void ifCharacterIsSubtractionOperator() {
         String nonOperator = "b";
         {
-            assertEquals(true, InfixTools.isOperator(subtraction));
+            assertEquals(true, InfixTools.isOperator(SUBTRACTION));
             assertEquals(false, InfixTools.isOperator(nonOperator));
         }
     }
@@ -105,13 +104,13 @@ public class InfixTest {
     @Test
     public void ifTopOfStackHasPrecedenceOverOperator() {
         {
-            stack.push(addition);
-            stack.push(multiplication);
-            assertEquals(true, InfixTools.operatorAtTopOfStackHasPrecedence(stack, addition));
-            assertEquals(true, InfixTools.operatorAtTopOfStackHasPrecedence(stack, subtraction));
-            assertEquals(false, InfixTools.operatorAtTopOfStackHasPrecedence(stack, multiplication));
-            assertEquals(false, InfixTools.operatorAtTopOfStackHasPrecedence(stack, division));
-            assertEquals(false, InfixTools.operatorAtTopOfStackHasPrecedence(stack, exponent));
+            stack.push(ADDITION);
+            stack.push(MULTIPLICATION);
+            assertEquals(true, InfixTools.operatorAtTopOfStackHasPrecedence(stack, ADDITION));
+            assertEquals(true, InfixTools.operatorAtTopOfStackHasPrecedence(stack, SUBTRACTION));
+            assertEquals(false, InfixTools.operatorAtTopOfStackHasPrecedence(stack, MULTIPLICATION));
+            assertEquals(false, InfixTools.operatorAtTopOfStackHasPrecedence(stack, DIVISION));
+            assertEquals(false, InfixTools.operatorAtTopOfStackHasPrecedence(stack, EXPONENT));
         }
     }
 

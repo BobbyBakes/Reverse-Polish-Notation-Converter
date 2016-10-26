@@ -2,16 +2,15 @@ package com.bobbybaker.app.infix;
 
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.Stack;
 
 /**
  * Created by bobbybaker on 10/24/16.
  */
 public class RPNTools {
-    private static final String operators = "^/*-+";
+    private static final String OPERATORS = "^/*-+";
 
     public static boolean isOperator(String operator) {
-        return operators.contains(operator);
+        return OPERATORS.contains(operator);
     }
 
     public static String convert(String RPN) {
