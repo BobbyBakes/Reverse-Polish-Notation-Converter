@@ -144,4 +144,14 @@ public class InfixTest {
         }
     }
 
+    @Test
+    public void convertInfixToRPNWithComplexEquation() {
+        {
+            String infix = "(a+g)*(((b-a)+c)^(c+(e*(d^f))))";
+            {
+                assertEquals("ag+ba-c+cedf^*+^*", InfixTools.convert(infix));
+            }
+        }
+    }
+
 }

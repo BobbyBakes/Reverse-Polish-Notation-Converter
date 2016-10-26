@@ -15,25 +15,23 @@ public class RPNTools {
     }
 
     public static String convert(String RPN) {
+        int indexOfLastCharacter = RPN.length() - 1;
         String[] RPNArray = RPN.split("");
         Stack<String> equationStack = new Stack<String>();
         for (int i = 0; i < RPNArray.length; i++) {
-            String t = String.valueOf(RPN.charAt(i));
-            if (isOperator(t)) {
-                determineOperatorPlacementAndAddToStack(equationStack, t, addParenthesis(i, RPN));
+            String operandOrOperator = String.valueOf(RPN.charAt(i));
+            if (isOperator(operandOrOperator)) {
+                determineOperatorPlacementAndAddToStack(equationStack, operandOrOperator, shouldAddParenthesis(i, indexOfLastCharacter));
             } else {
-                equationStack.add(t);
+                equationStack.add(operandOrOperator);
             }
 
         }
         return equationStack.pop();
     }
 
-    private static boolean addParenthesis(int i, String rpn) {
-        if (i == rpn.length() - 1) {
-            return false;
-        }
-        return true;
+    private static boolean shouldAddParenthesis(int i, int indexOfLastCharacter) {
+        return i != indexOfLastCharacter;
     }
 
     private static void determineOperatorPlacementAndAddToStack(Stack<String> equationStack, String t, boolean addParenthesis) {
