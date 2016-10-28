@@ -6,9 +6,15 @@ import static com.bobbybaker.app.infix.Constants.*;
 import static com.bobbybaker.app.infix.ConversionHelper.*;
 
 /**
- * Created by bobbybaker on 10/23/16.
+ * Strategy:
+ * Each character in the equation is read.
+ * Operands are written to a string representing the result.
+ * In the instance of an operator, operators are pushed to a stack.
+ * In the case that the next operator being pushed to the stack has lower precedence than the operator at the top of the stack, then the stack is emptied until the operator remaining in the stack has lower precedence.
+ * The operator in question is then pushed to the stack.
+ * Once the end of the equation is reached, the remaining stack is written to the end of the resulting string, representing an equation in RPN.
  */
-class InfixTools {
+public class InfixTools {
 
     public static String convert(String infix) {
         String[] infixArray = infix.split("");

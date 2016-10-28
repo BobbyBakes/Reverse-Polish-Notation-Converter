@@ -8,9 +8,17 @@ import static com.bobbybaker.app.infix.ConversionHelper.placeOperatorBetweenTopT
 
 
 /**
- * Created by bobbybaker on 10/24/16.
+ * Strategy:
+ * Each character in the equation is read.
+ * Operands are pushed to a stack.
+ * Once a operator is read, the top two objects in the stack are popped.
+ * The operator is then placed between those two string objects and surrounded by parenthesis.
+ * The resulting string is then pushed back to the stack and the next character is read.
+ * Once another operator is read, the top two are popped off the stack and the operator is placed between the two objects and surrounded by parenthesis.
+ * This is repeated until the end of the equation.
+ * The remaining string left in the stack is returned in a peek, representing a string an equation in RPN.
  */
-class RPNTools {
+public class RPNTools {
 
     public static String convert(String RPN) {
         String[] RPNArray = RPN.split("");
