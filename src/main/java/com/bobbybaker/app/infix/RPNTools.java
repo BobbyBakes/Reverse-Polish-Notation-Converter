@@ -2,13 +2,15 @@ package com.bobbybaker.app.infix;
 
 import java.util.Stack;
 
+import static com.bobbybaker.app.infix.Constants.LEFT_PARENTHESIS;
+import static com.bobbybaker.app.infix.Constants.OPERATORS;
+import static com.bobbybaker.app.infix.Constants.RIGHT_PARENTHESIS;
+import static com.bobbybaker.app.infix.ConversionHelper.isOperator;
+
 /**
  * Created by bobbybaker on 10/24/16.
  */
 public class RPNTools {
-    private static final String OPERATORS = "^/*-+";
-    private static final String LEFT_PARENTHESIS = "(";
-    private static final String RIGHT_PARENTHESIS = ")";
 
     public static String convert(String RPN) {
         String[] RPNArray = RPN.split("");
@@ -26,9 +28,7 @@ public class RPNTools {
         return equationStack.peek();
     }
 
-    static boolean isOperator(String operator) {
-        return OPERATORS.contains(operator);
-    }
+
 
     private static boolean shouldAddParenthesis(int i, int indexOfLastCharacter) {
         return i != indexOfLastCharacter;

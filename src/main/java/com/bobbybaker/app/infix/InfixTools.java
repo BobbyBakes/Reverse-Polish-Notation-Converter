@@ -2,15 +2,15 @@ package com.bobbybaker.app.infix;
 
 import java.util.Stack;
 
+import static com.bobbybaker.app.infix.Constants.*;
+import static com.bobbybaker.app.infix.ConversionHelper.isOperator;
+import static com.bobbybaker.app.infix.ConversionHelper.operatorIsParenthesis;
+import static com.bobbybaker.app.infix.ConversionHelper.stackOperatorHasPrecedence;
+
 /**
  * Created by bobbybaker on 10/23/16.
  */
 public class InfixTools {
-    //    index of OPERATORS string, represents correct precedence of each operation
-    private static final String OPERATORS = "^/*-+";
-    private static final String PARENTHESIS = "()";
-    private static final String RIGHT_PARENTHESIS = ")";
-    private static final String LEFT_PARENTHESIS = "(";
 
     public static String convert(String infix) {
         String[] infixArray = infix.split("");
@@ -35,14 +35,6 @@ public class InfixTools {
         return result.toString();
     }
 
-
-    static boolean isOperator(String operator) {
-        return OPERATORS.contains(operator);
-    }
-
-    static boolean operatorIsParenthesis(String operator) {
-        return PARENTHESIS.contains(operator);
-    }
 
     private static void pushLeftParenthesisOntoStack(Stack<String> operatorStack, String parenthesis) {
         if (parenthesis.equals(LEFT_PARENTHESIS)) {
@@ -85,7 +77,4 @@ public class InfixTools {
         return !(operatorStack.isEmpty() || !(operatorStack.peek().equals(operator)));
     }
 
-    private static boolean stackOperatorHasPrecedence(Stack<String> operatorStack, String operator) {
-        return OPERATORS.indexOf(operatorStack.peek()) < OPERATORS.indexOf(operator);
-    }
 }
