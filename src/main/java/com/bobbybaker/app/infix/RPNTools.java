@@ -10,7 +10,7 @@ import static com.bobbybaker.app.infix.ConversionHelper.placeOperatorBetweenTopT
 /**
  * Created by bobbybaker on 10/24/16.
  */
-public class RPNTools {
+class RPNTools {
 
     public static String convert(String RPN) {
         String[] RPNArray = RPN.split("");

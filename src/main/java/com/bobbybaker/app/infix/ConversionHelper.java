@@ -10,7 +10,7 @@ import static com.bobbybaker.app.infix.Constants.RIGHT_PARENTHESIS;
 /**
  * Created by bobbybaker on 10/28/16.
  */
-public class ConversionHelper {
+class ConversionHelper {
 
     static boolean isOperator(String operator) {
         return OPERATORS.contains(operator);

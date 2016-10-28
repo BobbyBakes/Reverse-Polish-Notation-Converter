@@ -1,5 +1,4 @@
 .gradle
 /.idea
 settings.gradle
-/build/
 /hs_err_pid1966.log

@@ -8,7 +8,7 @@ import static com.bobbybaker.app.infix.ConversionHelper.*;
 /**
  * Created by bobbybaker on 10/23/16.
  */
-public class InfixTools {
+class InfixTools {
 
     public static String convert(String infix) {
         String[] infixArray = infix.split("");

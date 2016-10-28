@@ -15,7 +15,7 @@ import static org.junit.Assert.assertEquals;
  * Created by bobbybaker on 10/28/16.
  */
 public class ConversionHelperTest {
-    private Stack<String> stack;
+    private Stack stack;
 
     @Before
     public void setUp() {

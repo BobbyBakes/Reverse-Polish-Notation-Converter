@@ -3,7 +3,7 @@ package com.bobbybaker.app.infix;
 /**
  * Created by bobbybaker on 10/28/16.
  */
-public final class Constants {
+final class Constants {
     //    index of OPERATORS string, represents correct precedence of each operation
     static final String OPERATORS = "^/*-+";
     static final String PARENTHESIS = "()";
