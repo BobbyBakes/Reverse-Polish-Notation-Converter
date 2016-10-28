@@ -80,7 +80,7 @@ public class ConversionHelperTest {
 
     @Test
     public void ifOperatorIsParenthesis() {
-        String nonParenthesis= "+";
+        String nonParenthesis = "+";
         {
             assertEquals(true, operatorIsParenthesis(PARENTHESIS));
             assertEquals(false, operatorIsParenthesis(nonParenthesis));
