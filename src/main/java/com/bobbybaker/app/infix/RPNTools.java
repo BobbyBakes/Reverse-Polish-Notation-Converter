@@ -2,10 +2,10 @@ package com.bobbybaker.app.infix;
 
 import java.util.Stack;
 
-import static com.bobbybaker.app.infix.Constants.LEFT_PARENTHESIS;
-import static com.bobbybaker.app.infix.Constants.OPERATORS;
-import static com.bobbybaker.app.infix.Constants.RIGHT_PARENTHESIS;
 import static com.bobbybaker.app.infix.ConversionHelper.isOperator;
+import static com.bobbybaker.app.infix.ConversionHelper.addParenthesis;
+import static com.bobbybaker.app.infix.ConversionHelper.placeOperatorBetweenTopTwoObjectsOfStack;
+
 
 /**
  * Created by bobbybaker on 10/24/16.
@@ -17,42 +17,33 @@ public class RPNTools {
         int indexOfLastCharacter = RPNArray.length - 1;
         Stack<String> equationStack = new Stack<String>();
 
-        for (int i = 0; i < RPNArray.length; i++) {
-            String operandOrOperator = String.valueOf(RPN.charAt(i));
-            if (isOperator(operandOrOperator)) {
-                determineOperatorPlacementAndAddToStack(equationStack, operandOrOperator, shouldAddParenthesis(i, indexOfLastCharacter));
-            } else {
-                equationStack.add(operandOrOperator);
-            }
+        for (int positionInEquation = 0; positionInEquation < RPNArray.length; positionInEquation++) {
+            String operandOrOperator = String.valueOf(RPN.charAt(positionInEquation));
+            handleOperatorAndOperands(indexOfLastCharacter, equationStack, positionInEquation, operandOrOperator);
         }
         return equationStack.peek();
     }
 
-
+    private static void handleOperatorAndOperands(int indexOfLastCharacter, Stack<String> equationStack, int i, String operandOrOperator) {
+        if (isOperator(operandOrOperator)) {
+            determineOperatorPlacementAndAddToStack(equationStack, operandOrOperator, shouldAddParenthesis(i, indexOfLastCharacter));
+        } else {
+            equationStack.add(operandOrOperator);
+        }
+    }
 
     private static boolean shouldAddParenthesis(int i, int indexOfLastCharacter) {
         return i != indexOfLastCharacter;
     }
 
-    private static void determineOperatorPlacementAndAddToStack(Stack<String> equationStack, String operator, boolean addParenthesis) {
+    private static void determineOperatorPlacementAndAddToStack(Stack<String> equationStack, String operator, boolean shouldAddParenthesis) {
         StringBuilder newNotation = new StringBuilder();
         int insertOperatorAtPosition = equationStack.peek().length();
 
-        placeOperator(equationStack, operator, newNotation, insertOperatorAtPosition);
-        if (addParenthesis) {
+        placeOperatorBetweenTopTwoObjectsOfStack(equationStack, operator, newNotation, insertOperatorAtPosition);
+        if (shouldAddParenthesis) {
             addParenthesis(newNotation);
         }
         equationStack.add(newNotation.toString());
-    }
-
-    private static void addParenthesis(StringBuilder newNotation) {
-        newNotation.insert(0, LEFT_PARENTHESIS);
-        newNotation.insert(newNotation.length(), RIGHT_PARENTHESIS);
-    }
-
-    private static void placeOperator(Stack<String> equationStack, String operator, StringBuilder newNotation, int insertOperatorAtPosition) {
-        newNotation.insert(newNotation.length(), equationStack.pop());
-        newNotation.insert(0, equationStack.pop());
-        newNotation.insert(newNotation.length() - insertOperatorAtPosition, operator);
     }
 }

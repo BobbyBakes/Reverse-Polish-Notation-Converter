@@ -3,8 +3,6 @@ package com.bobbybaker.app.infix;
 import org.junit.Test;
 
 
-import static com.bobbybaker.app.infix.Constants.*;
-import static com.bobbybaker.app.infix.ConversionHelper.isOperator;
 import static org.junit.Assert.assertEquals;
 
 /**
